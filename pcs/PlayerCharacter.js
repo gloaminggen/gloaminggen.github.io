@@ -1,8 +1,6 @@
 "use strict";
 
-import { randomStats } from "../utils/CharacterUtils.js";
 import { randomStringFromArray } from "../utils/CharacterUtils.js";
-import Gloamspun from "./Gloamspun.js";
 
 export default class PlayerCharacter { 
     // Superconstructor

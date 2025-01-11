@@ -15,21 +15,28 @@ function createRandomOffspring() {
 }
 
 function createRandomPC() {
-    let randomNumber = Math.floor(Math.random() * 4);  // Generates a number between 0 and 3
-    let offspring;
+    let randomNumber = Math.floor(Math.random() * 4);
+    let pc;
+
     switch (randomNumber) {
         case 0:
-            return new Gloamspun();
+            pc = new Murkborn();
+            break;
         case 1:
-            return new Murkborn();
+            pc = new Gloamspun();
+            break;
+        case 2:
+            pc = Inhuman.getInstance();
+            break;
         case 3:
-            offspring = Inhuman.getInstance();
-            return offspring;
-        case 4:
-            offspring = Mystic.getInstance();
-            return offspring;         
+            pc = Mystic.getInstance();
+            break;
     }
+
+    console.log("Generated PC:", pc);
+    return pc;
 }
+
 
 export function getCharacter(type) {
 
@@ -41,7 +48,7 @@ export function getCharacter(type) {
         case "Offspring":
             return createRandomOffspring();  // Return the instance created by createRandomOffspring
         case "Any":
-            createRandomPC();
+            return createRandomPC();
         default:
             return new Gloamspun();
     }

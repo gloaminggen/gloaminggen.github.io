@@ -369,7 +369,7 @@ const Paths = Object.freeze({
             
     HERDER: {
         name: "Herder",
-        source: SourceBooks.BELEVENTIDETANE,
+        source: SourceBooks.EVENTIDE,
         startingAbility: "Shepherd",
         abilities: Object.freeze(["Carries the Lamb",
             "Come After Me",
