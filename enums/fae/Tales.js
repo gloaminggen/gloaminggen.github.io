@@ -5,7 +5,7 @@ import SourceBooks from "../common/SourceBooks.js";
 const Tales = Object.freeze({
     ARTISTRY: {
         name: "Artistry",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Quicksilver Craftsman",
         abilities: Object.freeze([
             "Godmother's Loan",
@@ -18,7 +18,7 @@ const Tales = Object.freeze({
     },
     FURY: {
         name: "Fury",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Fueled By Anger",
         abilities: Object.freeze([
             "Claws and Fangs",
@@ -31,7 +31,7 @@ const Tales = Object.freeze({
     },
     GLORY: {
         name: "Glory",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Voice of Glory",
         abilities: Object.freeze([
             "The Chain of Command",
@@ -44,7 +44,7 @@ const Tales = Object.freeze({
     },
     INNOCENCE: {
         name: "Innocence",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Strength of the Small",
         abilities: Object.freeze([
             "The Cub's Cry",
@@ -57,7 +57,7 @@ const Tales = Object.freeze({
     },
     LOVE: {
         name: "Love",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "The Heart Knows",
         abilities: Object.freeze([
             "Beneath the Window",
@@ -70,7 +70,7 @@ const Tales = Object.freeze({
     },
     MALEDICTION: {
         name: "Malediction",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Don't Cross Me",
         abilities: Object.freeze([
             "Albatross About My Neck",
@@ -83,7 +83,7 @@ const Tales = Object.freeze({
     },
     MISCHIEF: {
         name: "Mischief",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Rogue",
         abilities: Object.freeze([
             "Nose For Trouble",
@@ -96,7 +96,7 @@ const Tales = Object.freeze({
     },
     MYSTERY: {
         name: "Mystery",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Glowing Strands",
         abilities: Object.freeze([
             "A Dead Silence Fell",
@@ -109,7 +109,7 @@ const Tales = Object.freeze({
     },
     SORROW: {
         name: "Sorrow",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "Heartache",
         abilities: Object.freeze([
             "Dignity of the Lost",
@@ -122,7 +122,7 @@ const Tales = Object.freeze({
     },
     TERROR: {
         name: "Terror",
-        source: SourceBooks.BELTANE,
+        source: SourceBooks.CORE,
         startingAbility: "It's Out There, Somewhere",
         abilities: Object.freeze([
             "Shadow-Walker",

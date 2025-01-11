@@ -51,7 +51,7 @@ export default class Gloamspun extends PlayerCharacter {
     }
 
     toString() {
-        let output = "Type: Gloamspun (Core)\n";
+        let output = "Type: Gloamspun (The Gloaming Diaries)\n";
         output += `Path: ${this.path.name} (${this.path.source})\n`;
         output += `Tale: ${this.tale.name} (${this.tale.source})\n`;
         output += `Perk: ${this.perk.name} (${this.perk.source})\n`;
