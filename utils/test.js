@@ -35,6 +35,27 @@ console.log(char.toString());
 
 console.log("Done");
 
+console.log("----Test Mystical Inheritance----");
+for (let i = 0; i < 100; i++) {
+    let char = Inhuman.getInstance();
+
+    while (char.birthright !== Birthrights.CURSED) {
+        char = Inhuman.getInstance(); 
+    }
+
+    let string = `Generated ${char.birthrightPerk} with ${char.perk.name}`;
+    
+    if (string == "Generated Puca-Bitten with Sidhe" || 
+        string == "Generated Puca-Bitten with Familiar" || 
+        string == "Generated Hound-Bitten with Necromancer" || 
+        string == "Generated Pridefall with Necromancer") {
+        console.log(string, "ERROR");
+    } else {
+        console.log(string);
+    }
+    
+}
+
 // Create a new character
 // const newCharacter = new PlayerCharacter();
 //console.log(newCharacter.boostedStat);

@@ -59,7 +59,7 @@ const Birthrights = Object.freeze({
             "Oneiromantic Osmosis",
             "Snicker-Snack",
             "Wool and Water"]),
-        excludedPerks: Object.freeze([Perks.FAMILIAR, Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP, Perks.NECROMANCER]),
+        excludedPerks: Object.freeze([Perks.FAMILIAR, Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP, Perks.NECROMANCER, Perks.NOBLE_BASTARD]),
         excludedPaths: Object.freeze([]),
         permittedLores: Object.freeze([Lores.AIR, Lores.EARTH, Lores.FIRE, Lores.WATER, Lores.DREAM, Lores.WOOD, Lores.GOSSAMER, Lores.REVERIE, Lores.BEYOND, Lores.PLASM, Lores.NOISE, Lores.ASH, Lores.QUICKSILVER, Lores.CHRYSALIS])
     },
@@ -78,7 +78,7 @@ const Birthrights = Object.freeze({
             "Painfully Beautiful",
             "Shifting Within",
             "Skin Deep"]),
-        excludedPerks: Object.freeze([Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP, Perks.NECROMANCER]),
+        excludedPerks: Object.freeze([Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP, Perks.NECROMANCER, Perks.NOBLE_BASTARD]),
         excludedPaths: Object.freeze([Paths.CHANGELING]),
         permittedLores: Object.freeze([Lores.AIR, Lores.EARTH, Lores.FIRE, Lores.WATER, Lores.DREAM, Lores.WOOD, Lores.GOSSAMER, Lores.REVERIE])
     },
@@ -97,7 +97,7 @@ const Birthrights = Object.freeze({
             "Gift of Flesh",
             "Soulspeak",
             "Sovereign Soul"]),
-        excludedPerks: Object.freeze([Perks.FAMILIAR, Perks.SIDHE, Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP]),
+        excludedPerks: Object.freeze([Perks.FAMILIAR, Perks.SIDHE, Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP, Perks.NOBLE_BASTARD]),
         excludedPaths: Object.freeze([Paths.RESURRECTED, Paths.VESSEL]),
         permittedLores: Object.freeze([Lores.AIR, Lores.EARTH, Lores.WOOD, Lores.DREAM, Lores.GOSSAMER, Lores.REVERIE, Lores.BEYOND, Lores.PLASM, Lores.NOISE, Lores.SALT, Lores.ASH])
     },
@@ -154,8 +154,8 @@ const Birthrights = Object.freeze({
             "Home Cursed Home",
             "Ring of Trust",
             "Strength From Pain"]),
-        excludedPerks: Object.freeze([Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP, Perks.NECROMANCER]),
-        excludedPaths: Object.freeze([Paths.CHANGELING]),
+        excludedPerks: [Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP, Perks.NOBLE_BASTARD],
+        excludedPaths: Object.freeze([]),
         permittedLores: Object.freeze([Lores.AIR, Lores.EARTH, Lores.FIRE, Lores.WATER, Lores.DREAM, Lores.WOOD, Lores.GOSSAMER, Lores.REVERIE])
     }
 

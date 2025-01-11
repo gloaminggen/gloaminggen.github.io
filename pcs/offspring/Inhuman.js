@@ -16,6 +16,8 @@ export default class Inhuman extends Offspring {
 
         this.startingAbilities = this.generateStartingAbilities(this);
 
+        this.updateCursedPerk();
+
         let inhumanQualitiesandWeaknesses = this.getInhumanQualitiesAndWeaknesses();
         this.inhumanQualities = Array.from(inhumanQualitiesandWeaknesses[0]);
         this.inhumanWeaknesses = Array.from(inhumanQualitiesandWeaknesses[1]);
@@ -50,7 +52,6 @@ export default class Inhuman extends Offspring {
             
         }
     
-        // Return Sets as Arrays
         return [Array.from(inhumanQualitiesSet), Array.from(inhumanWeaknessesSet)];
     }
     
@@ -63,6 +64,20 @@ export default class Inhuman extends Offspring {
         }
         inhumanWeaknessesSet.add(inhumanWeakness);
         return inhumanWeakness;
+    }
+
+    updateCursedPerk() {
+        this.excludedPerks = this.excludedPerks || [];
+    
+        if (this.birthrightPerk == "Puca-Bitten") {
+            this.excludedPerks.push(Perks.FAMILIAR, Perks.SIDHE);
+        } else {
+            this.excludedPerks.push(Perks.NECROMANCER);
+        }
+    
+        if (this.excludedPerks.includes(this.perk)) {
+            this.perk = randomFromObject(Perks, this.excludedPerks);
+        }
     }
 
     toString() {

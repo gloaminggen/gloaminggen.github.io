@@ -4,6 +4,7 @@ import { randomFromObject } from "../utils/CharacterUtils.js";
 import { randomStringFromArray } from "../utils/CharacterUtils.js";
 import PlayerCharacter from "./PlayerCharacter.js";
 import Legacies from "../enums/offspring/Legacies.js";
+import Birthrights from "../enums/offspring/Birthrights.js";
 
 export default class Offspring extends PlayerCharacter {
     constructor(stats, perk, path, birthright) {
@@ -15,7 +16,7 @@ export default class Offspring extends PlayerCharacter {
         this.birthright = birthright;
         this.legacy = randomFromObject(Legacies);
         this.birthrightPerk = randomStringFromArray(birthright.birthrightPerks);
-
+        
         this.startingAbilities = this.generateStartingAbilities(this);
     }
 
@@ -30,5 +31,8 @@ export default class Offspring extends PlayerCharacter {
         return startingAbilities;
     }
 
+    cursedPerkCheck(){
+        
+    }
     
 }
