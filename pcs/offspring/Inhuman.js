@@ -102,7 +102,7 @@ export default class Inhuman extends Offspring {
 
     toHTML() {
         let output = "<section class='character-info'>";
-        output += `<p><strong>Type:</strong> Offspring (Core)</p>`;
+        output += `<p><strong>Type:</strong> Offspring (Eventide)</p>`;
         output += `<p><strong>Path:</strong> ${this.path.name} (${this.path.source})</p>`;
         output += `<p><strong>Birthright:</strong> ${this.birthright.name} (${this.birthright.source})</p>`;
         output += `<p><strong>Birthright Perk:</strong> ${this.birthrightPerk}</p>`;

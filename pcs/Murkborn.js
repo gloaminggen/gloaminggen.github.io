@@ -62,7 +62,7 @@ export default class Murkborn extends PlayerCharacter {
 
     toHTML() {
         let output = "<section class='character-info'>";
-        output += `<p><strong>Type:</strong> Murkborn (Core)</p>`;
+        output += `<p><strong>Type:</strong> Murkborn (Murk)</p>`;
         output += `<p><strong>Path:</strong> ${this.path.name} (${this.path.source})</p>`;
         output += `<p><strong>Lament:</strong> ${this.lament.name} (${this.lament.source})</p>`;
         output += `<p><strong>Perk:</strong> ${this.perk.name} (${this.perk.source})</p>`;

@@ -74,7 +74,7 @@ export default class Gloamspun extends PlayerCharacter {
 
     toHTML() {
         let output = "<section class='character-info'>";
-        output += `<p><strong>Type:</strong> Gloamspun (Core)</p>`;
+        output += `<p><strong>Type:</strong> Gloamspun (The Gloaming Diaries)</p>`;
         output += `<p><strong>Path:</strong> ${this.path.name} (${this.path.source})</p>`;
         output += `<p><strong>Tale:</strong> ${this.tale.name} (${this.tale.source})</p>`;
         output += `<p><strong>Perk:</strong> ${this.perk.name} (${this.perk.source})</p>`;
