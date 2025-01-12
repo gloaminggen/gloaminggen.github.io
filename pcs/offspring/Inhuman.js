@@ -7,43 +7,47 @@ import Birthrights from "../../enums/offspring/Birthrights.js";
 import InhumanQualities from "../../enums/offspring/InhumanQualities.js";
 import InhumanWeaknesses from "../../enums/offspring/InhumanWeakness.js";
 import Offspring from "../Offspring.js";
+import { getSelectedBooks } from "../../utils/checkbox.js";
 
 export default class Inhuman extends Offspring {
     static INHUMAN_BIRTHRIGHTS = [Birthrights.CALIBAN, Birthrights.CASTOFF, Birthrights.CURSED];
     
     constructor(birthright, excludedPerks, excludedPaths) {
-        super(randomStats(), randomFromObject(Perks, excludedPerks), randomFromObject(Paths, excludedPaths), birthright)
+        const selectedBooks = getSelectedBooks();
+
+        super(randomStats(), randomFromObject(Perks, excludedPerks, [], selectedBooks), randomFromObject(Paths, excludedPaths, [], selectedBooks), birthright, selectedBooks)
 
         this.startingAbilities = this.generateStartingAbilities(this);
 
-        this.updateCursedPerk();
+        this.updateCursedPerk(selectedBooks);
 
-        let inhumanQualitiesandWeaknesses = this.getInhumanQualitiesAndWeaknesses();
+        let inhumanQualitiesandWeaknesses = this.getInhumanQualitiesAndWeaknesses(selectedBooks);
         this.inhumanQualities = Array.from(inhumanQualitiesandWeaknesses[0]);
         this.inhumanWeaknesses = Array.from(inhumanQualitiesandWeaknesses[1]);
     }
 
     static getInstance() {
-        let birthright = randomFromObject(Birthrights, [], Inhuman.INHUMAN_BIRTHRIGHTS);
+        const selectedBooks = getSelectedBooks();
+        let birthright = randomFromObject(Birthrights, [], Inhuman.INHUMAN_BIRTHRIGHTS, selectedBooks);
         let excludedPerks = birthright.excludedPerks;
         let excludedPaths = birthright.excludedPaths;
 
         return new Inhuman(birthright, excludedPerks, excludedPaths);
     }
 
-    getInhumanQualitiesAndWeaknesses() {
+    getInhumanQualitiesAndWeaknesses(selectedBooks) {
         let inhumanQualitiesSet = new Set();
         let inhumanWeaknessesSet = new Set();
         
         do {
-            inhumanQualitiesSet.add(randomFromObject(InhumanQualities));
+            inhumanQualitiesSet.add(randomFromObject(InhumanQualities, [], [], selectedBooks));
         } while (inhumanQualitiesSet.size < 2);
         
-        inhumanWeaknessesSet.add(this.getInhumanWeakness(inhumanWeaknessesSet));
+        inhumanWeaknessesSet.add(this.getInhumanWeakness(inhumanWeaknessesSet, selectedBooks));
         
         if (Math.random() < 0.5) {
             do {
-                inhumanQualitiesSet.add(randomFromObject(InhumanQualities));
+                inhumanQualitiesSet.add(randomFromObject(InhumanQualities, [], [], selectedBooks));
             } while (inhumanQualitiesSet.size < 3);
 
                 do {
@@ -55,18 +59,18 @@ export default class Inhuman extends Offspring {
         return [Array.from(inhumanQualitiesSet), Array.from(inhumanWeaknessesSet)];
     }
     
-    getInhumanWeakness(inhumanWeaknessesSet) {
+    getInhumanWeakness(inhumanWeaknessesSet, selectedBooks) {
         let inhumanWeakness;
         if (this.birthright == Birthrights.CASTOFF) {
-            inhumanWeakness = randomFromObject(InhumanWeaknesses, InhumanWeaknesses.TRULY_HIDEOUS);
+            inhumanWeakness = randomFromObject(InhumanWeaknesses, InhumanWeaknesses.TRULY_HIDEOUS, [], selectedBooks);
         } else {
-            inhumanWeakness = randomFromObject(InhumanWeaknesses);
+            inhumanWeakness = randomFromObject(InhumanWeaknesses, [], [], selectedBooks);
         }
         inhumanWeaknessesSet.add(inhumanWeakness);
         return inhumanWeakness;
     }
 
-    updateCursedPerk() {
+    updateCursedPerk(selectedBooks) {
         this.excludedPerks = this.excludedPerks || [];
     
         if (this.birthrightPerk == "Puca-Bitten") {
@@ -76,7 +80,7 @@ export default class Inhuman extends Offspring {
         }
     
         if (this.excludedPerks.includes(this.perk)) {
-            this.perk = randomFromObject(Perks, this.excludedPerks);
+            this.perk = randomFromObject(Perks, this.excludedPerks, [], selectedBooks);
         }
     }
 

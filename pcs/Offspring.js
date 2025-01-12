@@ -7,14 +7,14 @@ import Legacies from "../enums/offspring/Legacies.js";
 import Birthrights from "../enums/offspring/Birthrights.js";
 
 export default class Offspring extends PlayerCharacter {
-    constructor(stats, perk, path, birthright) {
+    constructor(stats, perk, path, birthright, selectedBooks) {
         if (new.target === Offspring) {
             throw new Error("Cannot instantiate abstract class 'Offspring' directly.");
         }
 
         super(stats, perk, path);
         this.birthright = birthright;
-        this.legacy = randomFromObject(Legacies);
+        this.legacy = randomFromObject(Legacies, [], [], selectedBooks);
         this.birthrightPerk = randomStringFromArray(birthright.birthrightPerks);
         
         this.startingAbilities = this.generateStartingAbilities(this);
@@ -31,8 +31,5 @@ export default class Offspring extends PlayerCharacter {
         return startingAbilities;
     }
 
-    cursedPerkCheck(){
-        
-    }
     
 }

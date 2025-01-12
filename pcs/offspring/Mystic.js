@@ -6,32 +6,36 @@ import Perks from "../../enums/common/Perks.js";
 import Birthrights from "../../enums/offspring/Birthrights.js";
 import Lores from "../../enums/common/Lores.js"
 import Offspring from "../Offspring.js";
+import { getSelectedBooks } from "../../utils/checkbox.js";
 
 export default class Mystic extends Offspring {
     static MYSTICAL_BIRTHRIGHTS = [Birthrights.CAMBION, Birthrights.CARPDREAMT, Birthrights.CAULBORN, Birthrights.CHANGELING, Birthrights.CORPSEKIN];
     
     constructor(birthright, excludedPerks, excludedPaths) {
-        super(randomStats(), randomFromObject(Perks, excludedPerks), randomFromObject(Paths, excludedPaths), birthright)
+        const selectedBooks = getSelectedBooks();
+
+        super(randomStats(), randomFromObject(Perks, excludedPerks, [], selectedBooks), randomFromObject(Paths, excludedPaths, [], selectedBooks), birthright, selectedBooks)
 
         this.startingAbilities = this.generateStartingAbilities(this);
-        this.startingLores = this.getMysticLores(this);
+        this.startingLores = this.getMysticLores(selectedBooks);
         this.startingCantrips = this.getMysticCantrips(this.startingLores);
     }
 
     static getInstance() {
-        let birthright = randomFromObject(Birthrights, [], Mystic.MYSTICAL_BIRTHRIGHTS);
+        const selectedBooks = getSelectedBooks();
+        let birthright = randomFromObject(Birthrights, [], Mystic.MYSTICAL_BIRTHRIGHTS, selectedBooks);
         let excludedPerks = birthright.excludedPerks;
         let excludedPaths = birthright.excludedPaths;
 
         return new Mystic(birthright, excludedPerks, excludedPaths);
     }
 
-    getMysticLores(mystic) {
+    getMysticLores(selectedBooks) {
         let startingLores = new Set();
-        let validLores = mystic.birthright.permittedLores;
+        let validLores = this.birthright.permittedLores;
         
         do {
-            startingLores.add(randomFromObject(Lores, [], validLores));
+            startingLores.add(randomFromObject(Lores, [], validLores, selectedBooks));
         } while (startingLores.size < 2);
 
         // Return Sets as Arrays

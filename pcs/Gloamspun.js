@@ -3,6 +3,7 @@
 
 import { randomFromObject, randomStringFromArray } from "../utils/CharacterUtils.js";
 import { randomStats } from "../utils/CharacterUtils.js";
+import SourceBooks from "../enums/common/SourceBooks.js";
 import Perks from "../enums/common/Perks.js";
 import Lores from "../enums/common/Lores.js";
 import Paths from "../enums/common/Paths.js";
@@ -11,23 +12,29 @@ import Shrouds from "../enums/fae/Shrouds.js";
 import Retinues from "../enums/fae/Retinues.js";
 import Roles from "../enums/fae/Roles.js";
 import PlayerCharacter from "./PlayerCharacter.js";
+import { getSelectedBooks } from "../utils/checkbox.js";
 
 
 export default class Gloamspun extends PlayerCharacter {
     static EXCLUDED_PERKS = [Perks.NECROMANCER];
-    static INCLUDED_LORES =  [Lores.AIR, Lores.EARTH, Lores.FIRE, Lores.WATER, Lores.DREAM, Lores.WOOD, Lores.GOSSAMER, Lores.REVERIE]; 
+    static INCLUDED_LORES =  [Lores.AIR, Lores.EARTH, Lores.FIRE, Lores.WATER, Lores.DREAM, Lores.WOOD, Lores.GOSSAMER, Lores.REVERIE];
     
     constructor() {
-        super(randomStats(), randomFromObject(Perks, Gloamspun.EXCLUDED_PERKS), randomFromObject(Paths));
-        this.tale = randomFromObject(Tales);
-        this.shroud = randomFromObject(Shrouds);
-        this.retinue = randomFromObject(Retinues);
-        this.role = randomFromObject(Roles);
+        // Get the selected books from the getSelectedBooks function
+        const selectedBooks = getSelectedBooks();
+
+        super(randomStats(), randomFromObject(Perks, Gloamspun.EXCLUDED_PERKS, [], selectedBooks), randomFromObject(Paths, [], [], selectedBooks));
+
+        // Initialize the rest of the properties
+        this.tale = randomFromObject(Tales, [], [], selectedBooks);
+        this.shroud = randomFromObject(Shrouds, [], [], selectedBooks);
+        this.retinue = randomFromObject(Retinues, [], [], selectedBooks);
+        this.role = randomFromObject(Roles, [], [], selectedBooks);
 
         if (Math.random() < 0.5) {
             this.optionalLore = null;
         } else {
-            this.optionalLore = randomFromObject(Lores, [], Gloamspun.INCLUDED_LORES);
+            this.optionalLore = randomFromObject(Lores, [], Gloamspun.INCLUDED_LORES, selectedBooks);
         }
 
         this.startingAbilities = this.generateStartingAbilities(this);

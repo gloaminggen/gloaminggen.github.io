@@ -1,6 +1,7 @@
 "use strict";
 
 import { randomStringFromArray } from "../utils/CharacterUtils.js";
+import { getSelectedBooks } from "../utils/checkbox.js";
 
 export default class PlayerCharacter { 
     // Superconstructor
@@ -37,5 +38,8 @@ export default class PlayerCharacter {
         // Placeholder, can be overridden in child classes like Gloamspun
         throw new Error("addChildAbilities should be implemented in the child class!");
     }
+
+    
+
 
 }

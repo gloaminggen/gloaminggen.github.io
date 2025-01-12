@@ -10,6 +10,7 @@ import Eidolons from "../enums/dead/Eidolons.js";
 import Lodges from "../enums/dead/Lodges.js";
 import PlayerCharacter from "./PlayerCharacter.js";
 import SourceBooks from "../enums/common/SourceBooks.js";
+import { getSelectedBooks } from "../utils/checkbox.js";
 
 export default class Murkborn extends PlayerCharacter {
     static EXCLUDED_PERKS = [Perks.FAMILIAR, Perks.SIDHE, Perks.DARKLING_ANCESTOR, Perks.SHROUD_SCRAP];
@@ -17,11 +18,13 @@ export default class Murkborn extends PlayerCharacter {
     static SOURCE = SourceBooks.MURK;
     
     constructor() {
-        super(randomStats(), randomFromObject(Perks, Murkborn.EXCLUDED_PERKS), randomFromObject(Paths));
-        this.lament = randomFromObject(Laments);
-        this.eidolon = randomFromObject(Eidolons);
-        this.lodge = randomFromObject(Lodges);
-        this.lore = randomFromObject(Lores, [], Murkborn.INCLUDED_LORES);
+        const selectedBooks = getSelectedBooks();
+
+        super(randomStats(), randomFromObject(Perks, Murkborn.EXCLUDED_PERKS, [], selectedBooks), randomFromObject(Paths, [], [], selectedBooks));
+        this.lament = randomFromObject(Laments, [], [], selectedBooks);
+        this.eidolon = randomFromObject(Eidolons, [], [], selectedBooks);
+        this.lodge = randomFromObject(Lodges, [], [], selectedBooks);
+        this.lore = randomFromObject(Lores, [], Murkborn.INCLUDED_LORES, selectedBooks);
 
         this.startingAbilities = this.generateStartingAbilities(this);
     }
