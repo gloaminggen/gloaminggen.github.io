@@ -8,7 +8,6 @@ export function getSelectedBooks() {
     checkboxes.forEach((checkbox) => {
         const bookValue = checkbox.value;
         
-        // Map the string value to the SourceBook object
         for (let key in SourceBooks) {
             if (SourceBooks[key] === bookValue) {
                 selectedBooks.push(SourceBooks[key]);
@@ -27,7 +26,6 @@ export function setupCheckboxListeners() {
             const selectedBooks = getSelectedBooks();
             console.log('Selected books:', selectedBooks);
 
-            // Check the type of the first item to confirm if it's an object
             if (selectedBooks.length > 0) {
                 console.log('Type of first selected book:', typeof selectedBooks[0]);
                 console.log('First selected book is:', selectedBooks[0]);

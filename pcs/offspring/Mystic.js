@@ -38,7 +38,6 @@ export default class Mystic extends Offspring {
             startingLores.add(randomFromObject(Lores, [], validLores, selectedBooks));
         } while (startingLores.size < 2);
 
-        // Return Sets as Arrays
         return Array.from(startingLores);
 
         }

@@ -20,12 +20,13 @@ export default class Gloamspun extends PlayerCharacter {
     static INCLUDED_LORES =  [Lores.AIR, Lores.EARTH, Lores.FIRE, Lores.WATER, Lores.DREAM, Lores.WOOD, Lores.GOSSAMER, Lores.REVERIE];
     
     constructor() {
-        // Get the selected books from the getSelectedBooks function
+        // So anyway I didn't even know you could do anything prior to a super() call in JavaScript
+        // TIL I guess
         const selectedBooks = getSelectedBooks();
 
         super(randomStats(), randomFromObject(Perks, Gloamspun.EXCLUDED_PERKS, [], selectedBooks), randomFromObject(Paths, [], [], selectedBooks));
 
-        // Initialize the rest of the properties
+
         this.tale = randomFromObject(Tales, [], [], selectedBooks);
         this.shroud = randomFromObject(Shrouds, [], [], selectedBooks);
         this.retinue = randomFromObject(Retinues, [], [], selectedBooks);

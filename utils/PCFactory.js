@@ -12,7 +12,7 @@ function createRandomOffspring() {
     } else {
         offspring = Mystic.getInstance();
     }
-    return offspring;  // Make sure to return the created instance
+    return offspring;
 }
 
 function createRandomPC(selectedBooks) {
@@ -26,7 +26,7 @@ function createRandomPC(selectedBooks) {
     }
 
     if (validChars.length === 0) {
-        throw new Error("No valid character types available. Please select sourcebooks.");
+        throw new Error("No valid character types available. Please select sourcebooks."); // If you actually see this error message, I'm impressed because you broke this well
     }
 
     const randomNumber = Math.floor(Math.random() * validChars.length);
@@ -44,21 +44,21 @@ export function getCharacter(type) {
                 return new Gloamspun();
             case "Murkborn":
                 if (!selectedBooks.includes(SourceBooks.MURK)) {
-                    throw new Error("Murkborn require the Murk sourcebook.");
+                    throw new Error("Murkborn require the Murk sourcebook."); // You need books!
                 }
                 return new Murkborn();
             case "Offspring":
                 if (!selectedBooks.includes(SourceBooks.EVENTIDE)) {
-                    throw new Error("Offspring require the Eventide sourcebook.");
+                    throw new Error("Offspring require the Eventide sourcebook."); // You need books!
                 }
                 return createRandomOffspring();
             case "Any":
                 return createRandomPC(selectedBooks);
             default:
-                return new Gloamspun(); // Default fallback
+                return new Gloamspun(); // Gloamspun get to be the default
         }
     } catch (error) {
-        document.getElementById("output-box").innerHTML = `<p class="error">${error.message}</p>`;
+        document.getElementById("output-box").innerHTML = `<p class="error">${error.message}</p>`; // :(
         console.error(error.message);
         return null;
     }

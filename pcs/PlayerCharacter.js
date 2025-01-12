@@ -20,23 +20,21 @@ export default class PlayerCharacter {
         this.startingAbilities = startingAbilities;
     }
 
-    // Method to generate starting abilities for all characters
+
     generateStartingAbilities(pc) {
         let path = pc.path;  // grab path
         let startingAbilities = [path.startingAbility];  // declare starting ability array and add the first path ability
         startingAbilities.push(randomStringFromArray(path.abilities));  // add a random second path ability
     
-        // Call child-specific ability method (polymorphism in action)
+
         this.addChildAbilities(startingAbilities, pc);
     
-        // Return or set the starting abilities (e.g., store in this.startingAbilities)
         return startingAbilities;
     }
     
-    // This method will be overridden in child classes
+    // only here for override
     addChildAbilities(startingAbilities, pc) {
-        // Placeholder, can be overridden in child classes like Gloamspun
-        throw new Error("addChildAbilities should be implemented in the child class!");
+        throw new Error("addChildAbilities should be implemented in the child class!"); // Again if you managed to see this I'm impressed
     }
 
     
